@@ -9,6 +9,7 @@ go get -u github.com/samuel/go-zookeeper
 go get -u github.com/alecthomas/log4go
 go get -u github.com/go-sql-driver/mysql
 go get -u github.com/influxdata/surgemq
+go get -u github.com/surge/glog
 
 #go get -u ./message/...
 #go get -u ./comet/...

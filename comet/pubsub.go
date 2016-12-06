@@ -27,6 +27,7 @@ const (
 	WebsocketProto         = uint8(1)
 	WebsocketProtoStr      = "websocket"
 	TCPProtoStr            = "tcp"
+	MQTTProtoStr					 = "mqtt"
 	Heartbeat              = "h"
 	minHearbeatSec         = 30
 	delayHeartbeatSec      = 5
@@ -66,8 +67,12 @@ func StartComet() error {
 			if err := StartTCP(); err != nil {
 				return err
 			}
+		} else if proto == MQTTProtoStr {
+			if err := StartMQTT(); err != nil {
+				return err
+			}
 		} else {
-			log.Warn("unknown gopush-cluster protocol %s, (\"websocket\" or \"tcp\")", proto)
+			log.Warn("unknown gopush-cluster protocol %s, (\"websocket\" or \"tcp\" or \"mqtt\")", proto)
 		}
 	}
 	return nil
